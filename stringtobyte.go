@@ -13,7 +13,7 @@ func main() {
 
 	c := "H"
 	fmt.Println(c)
-	
+
 	cs := []byte(c)
 	fmt.Println(cs)
 
