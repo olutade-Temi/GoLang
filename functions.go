@@ -17,6 +17,11 @@ func main() {
 	func(g int) {
 		fmt.Println("The meaning of life", g)
 	}(42)
+
+	k := func(d int) {
+		fmt.Println("I was born in the year", d)
+	}
+	k(1999)
 }
 func foot() {
 	fmt.Println("Hello Temi")
