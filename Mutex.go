@@ -1,5 +1,28 @@
 package main
 
-func main() {
+import (
+	"fmt"
+	"sync"
+)
 
+func main() {
+	var wg sync.WaitGroup
+	incrementer := 0
+	gs := 100
+	wg.Add(gs)
+	var m sync.Mutex
+
+	for i := 0; i < gs; i++ {
+		go func() {
+			v := incrementer
+			m.Lock()
+			v++
+			incrementer = v
+			fmt.Println(incrementer)
+			m.Unlock()
+			wg.Done()
+		}()
+	}
+	wg.Wait()
+	fmt.Println("end value", incrementer)
 }
